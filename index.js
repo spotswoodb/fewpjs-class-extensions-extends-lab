@@ -1,53 +1,41 @@
-// Your code here
-
-//define a polygon class. Accepts array of integers as a parameter, which will
-// represent each side of a shape
-
 class Polygon {
     constructor(sides){
-    this.sides = sides
-    this.count = this.sides.length
+        this.sides = sides
+        this.count = this.sides.length
     }
 
     get countSides() {
         return this.sides.length
     }
-    // get perimeter that calculates the sum of each side
-    //so each index of the array
-    //inheritable by child classes
-    get perimeter() {
+    
+    
+    get perimeter(){
         if(!Array.isArray(this.sides)) return;
         let sum = 0;
-        for (var int of this.sides) {
+        for(let int of this.sides){
             sum += int
         }
         return sum
     }
-
 }
 
-//use the get keyword to make a getter method countSides that counts the number of sides
-// meaning each index in the array
-
- // create a class to represent a triangle
-
 class Triangle extends Polygon {
-    get isValid() {
+    
+    get isValid(){
         if(!Array.isArray(this.sides)) return;
-        if (this.count !== 3) return;
+        if(this.count !== 3) return;
         let side1 = this.sides[0]
         let side2 = this.sides[1]
         let side3 = this.sides[2]
-        return ((side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1))
+        return ((side1 + side2 > side3) && (side2 + side3 > side1) && (side1 + side3 > side2))
     }
 }
 
-// create a class to represent a square
-
 class Square extends Polygon {
-    get isValid() {
+
+    get isValid(){
         if(!Array.isArray(this.sides)) return;
-        if (this.count !==4) return;
+        if(this.count !== 4) return;
         let side1 = this.sides[0]
         let side2 = this.sides[1]
         let side3 = this.sides[2]
@@ -57,7 +45,7 @@ class Square extends Polygon {
 
     get area() {
         if(!Array.isArray(this.sides)) return;
-        if (this.count !== 4) return;
+        if(this.count !== 4) return;
         return this.sides[0] * this.sides[0]
     }
 }
